@@ -12,6 +12,14 @@ import webbrowser
 import threading
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
+# Fix Windows console UTF-8 encoding
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+        sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+
 PORT = 8080
 
 class CustomHTTPHandler(SimpleHTTPRequestHandler):
@@ -93,23 +101,23 @@ def start_server(port=PORT):
     local_ips = get_local_ips()
 
     print("=" * 68)
-    print("      🚀  LET'S PLAY - PS4 EXPLOIT HOST SERVER (130N)  🚀")
-    print("      Supporting PS4 Firmwares 6.00 - 11.02 | Lapse & NetCtrl")
+    print("      LET'S PLAY - PS4 EXPLOIT HOST SERVER (130N)")
+    print("      Supporting PS4 Firmwares 6.00 - 11.02 | Ahmed Elattar")
     print("=" * 68)
-    print(" [✔] Server Status: RUNNING ACTIVE")
-    print(f" [✔] Serving Directory: {script_dir}\n")
-    print(" 🎮 Open one of the following URLs in your PS4 Web Browser:")
+    print(" [+] Server Status: RUNNING ACTIVE")
+    print(f" [+] Serving Directory: {script_dir}\n")
+    print(" [*] Open one of the following URLs in your PS4 Web Browser:")
     print("-" * 68)
     
     if local_ips:
         for ip in local_ips:
-            print(f"    👉 http://{ip}:{port}/")
+            print(f"    -> http://{ip}:{port}/")
     else:
-        print(f"    👉 http://localhost:{port}/")
+        print(f"    -> http://localhost:{port}/")
         
     print("-" * 68)
-    print(f" 💻 PC Preview / Testing: http://localhost:{port}/")
-    print(" ⌨️  Press CTRL + C to stop the server at any time.")
+    print(f" [PC] Local Preview / Testing: http://localhost:{port}/")
+    print(" [!] Press CTRL + C in this window to stop the server.")
     print("=" * 68 + "\n")
 
     # Automatically open local browser in a background thread

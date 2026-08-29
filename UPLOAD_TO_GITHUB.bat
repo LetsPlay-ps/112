@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 setlocal EnableDelayedExpansion
 title Let's Play - Upload to GitHub (130N)
 cd /d "%~dp0"
@@ -6,7 +7,7 @@ cls
 
 echo ===================================================================
 echo               LET'S PLAY - GITHUB UPLOAD WIZARD
-echo         PS4 Exploit Host FW 6.00 - 11.02 | Ahmed Elattar
+echo         PS4 Exploit Host FW 6.00 - 11.02 ^| Ahmed Elattar
 echo ===================================================================
 echo.
 
