@@ -7,28 +7,30 @@ cls
 
 echo ===================================================================
 echo               LET'S PLAY - GITHUB UPLOAD WIZARD
-echo         PS4 Exploit Host FW 6.00 - 11.02 ^| Ahmed Elattar
+echo         PS4 Exploit Host FW 11.02 - 13.00 ^| Ahmed Elattar
 echo ===================================================================
 echo.
 
 :: =====================================================================
 :: [1] GITHUB REPOSITORY URL CONFIGURATION / اعداد رابط مستودع جيت هب
-:: Default suggested repository: https://github.com/LetsPlay-ps/130.git
 :: =====================================================================
-set "DEFAULT_REPO=https://github.com/LetsPlay-ps/130.git"
+set "REPO_URL=https://github.com/LetsPlay-ps/130.git"
 
-echo [?] Enter your GitHub repository URL:
-echo     (Press ENTER to use default: %DEFAULT_REPO%)
-echo.
-set /p "USER_REPO=>> GitHub URL: "
-
-if "%USER_REPO%"=="" (
-    set "REPO_URL=%DEFAULT_REPO%"
-) else (
-    set "REPO_URL=%USER_REPO%"
+if "%REPO_URL%"=="" (
+    echo [?] Enter your GitHub repository URL:
+    echo     (Example: https://github.com/LetsPlay-ps/130.git)
+    echo.
+    set /p "REPO_URL=>> GitHub URL: "
 )
 
-echo.
+if "%REPO_URL%"=="" (
+    echo.
+    echo [X] Error: No repository URL provided!
+    echo.
+    pause
+    exit /b 1
+)
+
 echo [*] Target Repository: %REPO_URL%
 echo.
 

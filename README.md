@@ -3,7 +3,7 @@
   <img src="logo.png" alt="Let's Play PS4 Host Logo" width="280" style="border-radius: 20px; filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.6));" />
 
   # 🚀 LET'S PLAY • PS4 EXPLOIT HOST
-  ### 🎮 Premium WebKit & Kernel Exploit Suite for PS4 FW 6.00 - 11.02 🎮
+  ### 🎮 Premium WebKit & Kernel Exploit Suite for PS4 FW 11.02 - 13.00 🎮
 
   <p align="center">
     <strong>Crafted & Maintained by <a href="#-developer--lead">Ahmed Elattar</a></strong>
@@ -13,7 +13,7 @@
   <p align="center">
     <img src="https://img.shields.io/badge/Developer-Ahmed%20Elattar-00f0ff?style=for-the-badge&logo=github&logoColor=black" alt="Developer">
     <img src="https://img.shields.io/badge/Platform-PlayStation%204-003791?style=for-the-badge&logo=playstation&logoColor=white" alt="PlayStation 4">
-    <img src="https://img.shields.io/badge/Firmware-6.00%20--%2011.02-7928ca?style=for-the-badge" alt="Firmware">
+    <img src="https://img.shields.io/badge/Firmware-11.02%20--%2013.00-7928ca?style=for-the-badge" alt="Firmware">
     <img src="https://img.shields.io/badge/Chains-Lapse%20%7C%20NetCtrl-ec4899?style=for-the-badge" alt="Chains">
     <img src="https://img.shields.io/badge/Payload-GoldHEN%20Loaded-00ff88?style=for-the-badge&logo=dependabot&logoColor=black" alt="GoldHEN">
     <img src="https://img.shields.io/badge/Cache-100%25%20Offline-ff0080?style=for-the-badge" alt="Offline Ready">
@@ -33,7 +33,7 @@
 ---
 
 > [!IMPORTANT]
-> **Let's Play Host (130N)** is a comprehensive, research-grade exploit environment engineered for PlayStation 4 consoles running system firmwares **6.00 through 11.02**. Featuring the **CSSFontFace UAF** WebKit exploit combined with dual kernel exploit engines (**Lapse** & **NetCtrl**), it provides unmatched stability, automated jailbreaking, and instant payload injection in a single streamlined experience.
+> **Let's Play Host (130N)** is a comprehensive, research-grade exploit environment engineered for PlayStation 4 consoles running system firmwares **11.02 through 13.00**. Featuring the **CSSFontFace UAF** WebKit exploit combined with dual kernel exploit engines (**Lapse** & **NetCtrl**), it provides unmatched stability, automated jailbreaking, and instant payload injection in a single streamlined experience.
 
 ---
 

@@ -7,17 +7,17 @@
 
 [CmdletBinding()]
 param (
-    [string]$RepoUrl = ""
+    [string]$RepoUrl = "https://github.com/LetsPlay-ps/130.git"
 )
 
 Clear-Host
 Write-Host "===================================================================" -ForegroundColor Cyan
 Write-Host "               LET'S PLAY - GITHUB UPLOAD WIZARD                   " -ForegroundColor Cyan
-Write-Host "         PS4 Exploit Host FW 6.00 - 11.02 | Ahmed Elattar          " -ForegroundColor DarkCyan
+Write-Host "         PS4 Exploit Host FW 11.02 - 13.00 | Ahmed Elattar         " -ForegroundColor DarkCyan
 Write-Host "===================================================================" -ForegroundColor Cyan
 Write-Host ""
 
-# 1. Ask for repo URL if not supplied
+# 1. Check repo URL
 if ([string]::IsNullOrWhiteSpace($RepoUrl)) {
     Write-Host "[?] Enter your GitHub repository URL:" -ForegroundColor Yellow
     Write-Host "    (Example: https://github.com/LetsPlay-ps/130.git or your username/repo)" -ForegroundColor DarkGray
@@ -26,7 +26,6 @@ if ([string]::IsNullOrWhiteSpace($RepoUrl)) {
         $RepoUrl = $inputUrl.Trim()
     } else {
         $RepoUrl = "https://github.com/LetsPlay-ps/130.git"
-        Write-Host "    [!] Using default repository: $RepoUrl" -ForegroundColor DarkYellow
     }
 }
 
