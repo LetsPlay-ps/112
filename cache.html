@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.manifest">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's Play • Installing Offline Cache</title>
+  <link rel="icon" type="image/png" href="icon0.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="includes/style.css">
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <!-- Header Card: Distinctive LET'S PLAY + Badges -->
+    <div class="header-card">
+      <h1 class="brand-title">LET'S PLAY</h1>
+      <p class="brand-subtitle">Offline Cache Installation (FW 6.00 - 11.02)</p>
+      
+      <div class="badges-row">
+        <span class="badge badge-primary">🎮 PS4 FW 6.00 - 11.02</span>
+        <span class="badge badge-success">⚡ GoldHEN Ready</span>
+        <span class="badge badge-secondary">🛡️ 100% Offline Cache</span>
+      </div>
+    </div>
+
+    <!-- Cache Progress Bar Card -->
+    <div class="cache-progress-card">
+      <div class="progress-header">
+        <span class="progress-title" id="progressStatus">⚡ Downloading Offline Assets...</span>
+        <span class="progress-percentage" id="progressPercentage">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBarFill"></div>
+      </div>
+    </div>
+
+    <!-- Terminal Console Log -->
+    <div class="terminal-container">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="terminal-title">CACHE INSTALLER LOGS</span>
+      </div>
+      <pre id="console"></pre>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div><strong>LET'S PLAY HOST</strong> • Special Thanks to <strong>Ahmed Elattar</strong></div>
+    </footer>
+  </div>
+
+  <script>
+    // Clear history and prevent back navigation loop
+    try {
+      history.replaceState(null, null, 'index.html');
+      var histlength = history.length;
+      history.go(-histlength);
+    } catch (e) {}
+
+    // Logging utility
+    const outputConsole = document.getElementById("console");
+    const progressBarFill = document.getElementById("progressBarFill");
+    const progressPercentage = document.getElementById("progressPercentage");
+    const progressStatus = document.getElementById("progressStatus");
+
+    function log(msg, color = "#94a3b8") {
+      if (!outputConsole) return;
+      let styled = msg;
+      if (msg.includes("[SUCCESS]")) {
+        styled = `<span style="color:#10b981; font-weight:bold;">✔ ${msg}</span>`;
+      } else if (msg.includes("Error") || msg.includes("[ERROR]")) {
+        styled = `<span style="color:#ef4444; font-weight:bold;">✖ ${msg}</span>`;
+      } else if (msg.includes("[CACHE]")) {
+        styled = `<span style="color:#00f0ff; font-weight:600;">⚡ ${msg}</span>`;
+      } else {
+        styled = `<span style="color:${color}">${msg}</span>`;
+      }
+      outputConsole.innerHTML += styled + "<br>";
+      outputConsole.scrollTop = outputConsole.scrollHeight;
+    }
+
+    // Download progress (% display)
+    function DLProgress(e) {
+      if (e.lengthComputable || (e.total && e.total > 0)) {
+        const percent = Math.round((e.loaded / e.total) * 100);
+        progressBarFill.style.width = percent + "%";
+        progressPercentage.textContent = percent + "%";
+        progressStatus.textContent = `⚡ Downloading Cache (${percent}%)...`;
+        log(`[CACHE] Downloading assets... ${percent}% complete.`);
+      } else {
+        progressBarFill.style.width = "50%";
+        progressPercentage.textContent = "50%";
+        log("[CACHE] Downloading package assets...");
+      }
+    }
+
+    // On cache complete
+    function DisplayCacheProgress() {
+      progressBarFill.style.width = "100%";
+      progressPercentage.textContent = "100%";
+      progressStatus.textContent = "✔ Cache Installed Successfully!";
+      progressStatus.style.color = "#10b981";
+
+      log(" ");
+      log("[SUCCESS] Let's Play Host cache installed successfully.", "#10b981");
+      log("Page will reload to main host in 3 seconds...", "#00f0ff");
+
+      setTimeout(function() { log("Preparing host environment..."); }, 1800);
+      setTimeout(function() { location.replace('index.html'); }, 3000);
+    }
+
+    // Event listeners
+    if (window.applicationCache) {
+      window.applicationCache.addEventListener("progress", DLProgress, false);
+      window.applicationCache.oncached = function(e) { DisplayCacheProgress(); };
+      window.applicationCache.onupdateready = function(e) { DisplayCacheProgress(); };
+      window.applicationCache.onnoupdate = function(e) {
+        log("[INFO] Cache is already up to date. Redirecting to host...", "#10b981");
+        setTimeout(function() { location.replace('index.html'); }, 1500);
+      };
+      window.applicationCache.onerror = function(e) {
+        log("[INFO] Cache check finished or loaded from local cache.", "#94a3b8");
+        setTimeout(function() { location.replace('index.html'); }, 2000);
+      };
+      window.applicationCache.onchecking = function(e) {
+        log("[CACHE] Checking for online manifest updates...", "#38bdf8");
+      };
+      window.applicationCache.ondownloading = function(e) {
+        log("[CACHE] Downloading files into offline cache...", "#00f0ff");
+      };
+    } else {
+      log("[INFO] AppCache not supported or running directly in browser.", "#f59e0b");
+      setTimeout(function() { location.replace('index.html'); }, 2000);
+    }
+  </script>
+</body>
+</html>

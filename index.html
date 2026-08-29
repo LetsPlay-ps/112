@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.manifest">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's Play • PS4 Exploit Host FW 6.00 - 11.02</title>
+  <link rel="icon" type="image/png" href="icon0.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="includes/style.css">
+
+  <script>
+    // AppCache Redirect Check for initial caching
+    if ((window.applicationCache && (window.applicationCache.status === 0 || window.applicationCache.status === 3))) {
+      window.location.replace("cache.html");
+    }
+  </script>
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <!-- Header Card: Distinctive LET'S PLAY + Badges -->
+    <div class="header-card">
+      <h1 class="brand-title">LET'S PLAY</h1>
+      <p class="brand-subtitle">PS4 Exploit Host • CSSFontFace & Lapse / NetCtrl Engine</p>
+      
+      <div class="badges-row">
+        <span class="badge badge-primary">🎮 PS4 FW 6.00 - 11.02</span>
+        <span class="badge badge-success">⚡ GoldHEN Ready</span>
+        <span class="badge badge-secondary">🛡️ 100% Offline Cache</span>
+        <span class="badge badge-info" id="UA">Detecting System...</span>
+      </div>
+    </div>
+
+    <!-- Exploit Options Card: Kernel Selection & Auto Jailbreak -->
+    <div class="options-card">
+      <div class="option-group">
+        <span class="option-label-title">⚙️ Kernel Chain:</span>
+        <div class="segmented-control" id="kernel-options">
+          <input type="radio" name="kernel" id="lapse-exploit" value="lapse" checked>
+          <label for="lapse-exploit">Lapse (Rec)</label>
+          <input type="radio" name="kernel" id="netctrl-exploit" value="netctrl">
+          <label for="netctrl-exploit">NetCtrl</label>
+        </div>
+      </div>
+
+      <div class="toggle-wrapper">
+        <label class="switch" for="autoJbInput">
+          <input type="checkbox" id="autoJbInput">
+          <span class="slider"></span>
+        </label>
+        <span id="autoJbLabel" class="option-label-title">Auto Jailbreak</span>
+        <span id="countdownBadge" class="countdown-badge" style="display:none;">(5s)</span>
+      </div>
+    </div>
+
+    <!-- Action Button -->
+    <div class="action-container">
+      <button id="jeilbrek" class="launch-btn">
+        <span>🚀 Start Jailbreak</span>
+      </button>
+    </div>
+
+    <!-- Terminal Console Window -->
+    <div class="terminal-container">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="terminal-title">EXPLOIT CONSOLE LOGS</span>
+        <div class="terminal-actions">
+          <button class="term-btn" type="button" onclick="clearConsoleLog()">Clear</button>
+          <button class="term-btn" type="button" onclick="copyConsoleLog()">Copy</button>
+        </div>
+      </div>
+      <pre id="console">[SYSTEM] Let's Play Host loaded and ready.
+[SYSTEM] Waiting for user trigger...</pre>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div><strong>LET'S PLAY HOST</strong> • Special Thanks to <strong>Ahmed Elattar</strong></div>
+    </footer>
+  </div>
+
+  <script src="src/main.js"></script>
+  <script src="includes/script.js"></script>
+</body>
+</html>
