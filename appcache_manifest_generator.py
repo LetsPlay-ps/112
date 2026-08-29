@@ -10,16 +10,25 @@ def calculate_file_hash(file_path):
     return sha256_hash.hexdigest()
 
 def generate_cache_manifest(directory_path, include_directory_path=True, include_payloads=True):
-    manifest = ["CACHE MANIFEST"]
+    manifest = ["CACHE MANIFEST", "# Let's Play Host - PS4 130N Cache Manifest"]
     
-    for root, _, files in os.walk(directory_path):
-        for file in files:
-            if '.manifest' in file:
-                continue
-            file_path = os.path.join(root, file)
+    ignored_dirs = {'.git', '__pycache__', '.agents', '.gemini'}
+    ignored_extensions = ('.manifest', '.py', '.pyc', '.bat', '.ps1', '.md', '.log')
+    ignored_files = {'cat.jpg'}
 
+    for root, dirs, files in os.walk(directory_path):
+        dirs[:] = [d for d in dirs if d not in ignored_dirs and not d.startswith('.')]
+
+        for file in sorted(files):
+            if file.startswith('.'):
+                continue
+            if file in ignored_files or file.endswith(ignored_extensions):
+                continue
+
+            file_path = os.path.join(root, file)
             if not include_payloads and 'payload' in root:
                 continue
+
             file_hash = calculate_file_hash(file_path)
             
             if args.cloudflare_workaround and file == 'index.html':
@@ -37,6 +46,7 @@ def generate_cache_manifest(directory_path, include_directory_path=True, include
             manifest_path = manifest_path.replace("\\","/")
             manifest.append(manifest_path + " #" + file_hash)
 
+    manifest.append("\nNETWORK:\n*")
     return manifest
 
 parser = argparse.ArgumentParser(description="Generate an appcache file.")

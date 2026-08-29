@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="cache.manifest">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +11,12 @@
   <link rel="stylesheet" href="includes/style.css">
 
   <script>
-    // AppCache Redirect Check for initial caching
-    if ((window.applicationCache && (window.applicationCache.status === 0 || window.applicationCache.status === 3))) {
-      window.location.replace("cache.html");
+    // AppCache Redirect Check with loop protection
+    if (window.applicationCache && (window.applicationCache.status === 0 || window.applicationCache.status === 3)) {
+      if (!sessionStorage.getItem('visited_cache')) {
+        sessionStorage.setItem('visited_cache', '1');
+        window.location.replace("cache.html");
+      }
     }
   </script>
 </head>
