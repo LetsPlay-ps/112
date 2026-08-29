@@ -3,7 +3,7 @@
   <img src="logo.png" alt="Let's Play PS4 Host Logo" width="280" style="border-radius: 20px; filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.6));" />
 
   # 🚀 LET'S PLAY • PS4 EXPLOIT HOST
-  ### 🎮 Premium WebKit & Kernel Exploit Suite for PS4 FW 11.02 - 13.00 🎮
+  ### 🎮 Premium WebKit & Kernel Exploit Suite for PS4 FW 10.00 - 11.02 🎮
 
   <p align="center">
     <strong>Crafted & Maintained by <a href="#-developer--lead">Ahmed Elattar</a></strong>
